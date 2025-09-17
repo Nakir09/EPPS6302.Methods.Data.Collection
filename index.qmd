@@ -1,11 +1,15 @@
 ---
-title: "EPPS6302.Methods.Data.Collection"
+title: "EPPS 6302 Methods of Data Collection & Production"
+format: html
 ---
 
-This is a Quarto website.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+Hello! My name is Nakir, and I am a PhD candidate in Geospatial Information Sciences at The University of Texas at Dallas.
 
-```{r}
-1 + 1
-```
+Currently, I am working on cassava identification using UAV imagery.
+
+**Contact:**
+
+📧 [md.nakir.ahmed.09\@gmail.com](mailto:md.nakir.ahmed.09@gmail.com)\
+🔗 [LinkedIn](https://linkedin.com/in/YOUR-USERNAME)
+
