@@ -1,0 +1,89 @@
+---
+title: "Assignment 04"
+author: "Md Nakir Ahmed"
+format: html
+editor: visual
+---
+
+Scrape a Wiki table (Life Expectancy) and clean it
+
+```{r}
+############################################################
+## Assignment 04
+############################################################
+
+# 1. Libraries
+library(tidyverse)
+library(rvest)
+library(stringr)
+
+# 2. Target Page
+url <- "https://en.wikipedia.org/wiki/List_of_countries_by_life_expectancy"
+page <- read_html(url)
+
+# 3. Grab all wikitables on the page
+all_tables <- page |>
+  html_elements("table.wikitable") |>
+  html_table(fill = TRUE)
+
+if (length(all_tables) == 0) stop("No .wikitable tables found.")
+
+# 4. Helper functions
+norm_names <- function(x) {
+  x |>
+    str_to_lower() |>
+    str_replace_all("\\s+", "_") |>
+    str_replace_all("[^a-z0-9_]", "")
+}
+
+score_table <- function(df) {
+  nms <- norm_names(names(df))
+  has_country <- any(str_detect(nms, "country|territor|area|location|nation|state"))
+  has_overall <- any(str_detect(nms, "overall|both|total|life_expectancy(.*)birth$|^life_expectancy$"))
+  has_male <- any(str_detect(nms, "male"))
+  has_female <- any(str_detect(nms, "female"))
+  as.integer(has_country) + as.integer(has_overall) + as.integer(has_male) + as.integer(has_female)
+}
+
+strip_notes <- function(x) str_replace_all(x, "\\[[^\\]]*\\]", "") |>
+  trimws()
+to_numeric <- function(x) suppressWarnings(as.numeric(str_replace_all(x, "[^0-9.]", "")))
+
+# 5. Pick the best table automatically
+scores <- purrr::map_int(all_tables, score_table)
+best_idx <- which.max(scores)
+if (scores[best_idx] == 0) stop("No table with required columns found.")
+life_df_raw <- all_tables[[best_idx]]
+
+cat("Using table index:", best_idx, "out of", length(all_tables), "\n")
+
+# 6. Standardize column names
+nms <- norm_names(names(life_df_raw))
+names(life_df_raw) <- nms
+
+# Locate core columns
+col_country <- names(life_df_raw)[str_detect(nms, "country|territor|area|location|nation|state")][1]
+col_overall <- names(life_df_raw)[str_detect(nms, "overall|both|total|life_expectancy(.*)birth$|^life_expectancy$")][1]
+col_male <- names(life_df_raw)[str_detect(nms, "male")][1]
+col_female <- names(life_df_raw)[str_detect(nms, "female")][1]
+
+# 7. Build clean dataset (no Rank/Date)
+life_df_clean <- tibble(
+  Country = strip_notes(as.character(life_df_raw[[col_country]])),
+  Overall_Years = to_numeric(life_df_raw[[col_overall]]),
+  Male_Years = to_numeric(life_df_raw[[col_male]]),
+  Female_Years = to_numeric(life_df_raw[[col_female]])
+) |>
+  filter(!(is.na(Overall_Years) & is.na(Male_Years) & is.na(Female_Years))) |>
+  arrange(Country)
+
+# 8. Preview
+cat("\nClean dataset preview (top 10 rows):\n")
+print(head(life_df_clean, 10))
+cat("\nStructure:\n")
+str(life_df_clean)
+
+# 9. Save to CSV
+write.csv(life_df_clean, "life_expectancy_tidy.csv", row.names = FALSE)
+cat("\nSaved as 'life_expectancy_tidy.csv' in your working directory.\n")
+```

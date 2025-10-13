@@ -19,11 +19,11 @@ website:
           - text: "Prepare for class 3"
             href: Prepareforclass03_Nakir.pdf
           - text: "Prepare for class 4"
-            href: KM_Prepare for class 4_Nakir.pdf
+            href: Prepareforclass04_Nakir.pdf
           - text: "Prepare for class 5"
-            href: KM_Prepare for class 5_Nakir.pdf
+            href: Prepareforclass05_Nakir.pdf
           - text: "Prepare for class 6"
-            href: KM_Prepare for class 6_Nakir.pdf
+            href: Prepareforclass06_Nakir.pdf
       - text: "Assignments"
         menu:
           - text: "Assignment 01"
@@ -31,31 +31,20 @@ website:
           - text: "Assignment 02"
             href: assignment02_Nakir.pdf
           - text: "Assignment 03"
-            href: KM_Assignment03_Nakir.pdf
-          - href: KM_Assignment04_Nakir.qmd
-            text: Assignment 04
-          - href: KM_Assignment05_Nakir.qmd
-            text: Assignment 05
-      - text: "Labs"
-        menu:
-          - href: Lab01.qmd
-            text: Lab 01
-          - href: Lab02.qmd
-            text: Lab 02
-      - text: "Workshops"
-        menu:
-          - href: workshops.qmd
-            text: Workshop Overview
+            href: assignment03_Nakir.pdf
+          - href: assignment04_Nakir.qmd
+            text: "Assignment 04"
       - text: "Final Project"
         menu:
           - text: "Final Project Proposal"
-            href: KM_Project_Proposal_Nakir.pdf
+            href: Ahmed_FinalProject_Proposal.pdf
           - text: "Final Project Progress"
             href: KM_Project_Progress_Nakir.pdf
           - text: "Final Project Presentation"
             href: Nakir_Final_Project_Presesntation.pdf
           - text: "Final Project Document"
             href: Nakir_Final_Project_Report.pdf
+
 
 format:
   html:
@@ -64,6 +53,3 @@ format:
       - brand
     css: styles.css
     toc: true
-
-
-
