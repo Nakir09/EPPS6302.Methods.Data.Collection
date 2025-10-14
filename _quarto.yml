@@ -24,6 +24,8 @@ website:
             href: Prepareforclass05_Nakir.pdf
           - text: "Prepare for class 6"
             href: Prepareforclass06_Nakir.pdf
+          - text: "Prepare for class 7"
+            href: Prepareforclass07_Nakir.pdf
       - text: "Assignments"
         menu:
           - text: "Assignment 01"
@@ -37,7 +39,7 @@ website:
       - text: "Final Project"
         menu:
           - text: "Final Project Proposal"
-            href: Ahmed_FinalProject_Proposal.pdf
+            href: Ahmed_FinalProject_Proposal_Report-merged.pdf
           - text: "Final Project Progress"
             href: KM_Project_Progress_Nakir.pdf
           - text: "Final Project Presentation"
