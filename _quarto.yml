@@ -26,6 +26,14 @@ website:
             href: Prepareforclass06_Nakir.pdf
           - text: "Prepare for class 7"
             href: Prepareforclass07_Nakir.pdf
+          - text: "Prepare for class 8"
+            href: Prepareforclass08_Nakir.pdf
+          - text: "Prepare for class 9"
+            href: Prepareforclass09_Nakir.pdf
+          - text: "Prepare for class 10"
+            href: Prepareforclass10_Nakir.pdf
+          - text: "Prepare for class 11"
+            href: Prepareforclass11_Nakir.pdf
       - text: "Assignments"
         menu:
           - text: "Assignment 01"
