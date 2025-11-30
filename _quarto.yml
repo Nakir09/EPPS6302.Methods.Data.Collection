@@ -36,6 +36,10 @@ website:
             href: assignment03_Nakir.pdf
           - href: assignment04_Nakir.qmd
             text: "Assignment 04"
+          - text: "Assignment 05"
+            href: assignment05_Nakir.pdf
+          - href: assignment06_Nakir.qmd
+            text: "Assignment 06"
       - text: "Final Project"
         menu:
           - text: "Final Project Proposal"
